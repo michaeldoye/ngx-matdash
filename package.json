@@ -26,6 +26,7 @@
     "@angular/router": "^6.0.4",
     "@angular/service-worker": "^6.0.4",
     "@ncstate/sat-popover": "^2.1.1",
+    "@swimlane/ngx-charts": "^8.1.0",
     "angularfire2": "^5.0.0-rc.10",
     "core-js": "^2.5.4",
     "firebase": "^5.0.4",
