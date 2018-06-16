@@ -1,0 +1,25 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ThemeService } from '../../core/utils/theme.service';
+import { MatSidenav } from '@angular/material';
+import { SidenavService } from '../../client/sidenav/sidenav.service';
+
+@Component({
+  selector: 'app-sidenav',
+  templateUrl: './sidenav.component.html',
+  styleUrls: ['./sidenav.component.css']
+})
+export class SidenavComponent implements OnInit {
+
+  @ViewChild('sidenav') public sidenav: MatSidenav;
+
+  constructor(
+    public theme: ThemeService,
+    public sv: SidenavService
+  ) { }
+
+  public ngOnInit(): void {
+    // Store sidenav to service
+    this.sv.setSidenav(this.sidenav);
+  }
+
+}
