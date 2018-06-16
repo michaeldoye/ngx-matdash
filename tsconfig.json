@@ -2,6 +2,13 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "~/*": [ "*" ],
+      "@core/*": [ "src/app/core/*" ],
+      "@shared/*": [ "src/app/client/shared/*" ],
+      "@widget/*": [ "src/app/client/widgets/*" ],
+      "@page/*": [ "src/app/client/pages/*" ],
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,

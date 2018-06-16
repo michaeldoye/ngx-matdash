@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { flyInOut } from '../../route.animation';
+import { flyInOut } from '@core/utils/route.animation';
 
 @Component({
   selector: 'ngxtemplate-dashboard',

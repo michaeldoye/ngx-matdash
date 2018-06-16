@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NetworkService } from './core/utils/network.service';
-import { WorkerService } from './core/utils/worker.service';
-import { ThemeService } from './core/utils/theme.service';
-import { fadeInOut } from './route.animation';
-import { LoadingService } from './core/utils/loading.service';
+import { ThemeService } from '@core/utils/theme.service';
+import { NetworkService } from '@core/utils/network.service';
+import { LoadingService } from '@core/utils/loading.service';
+import { WorkerService } from '@core/utils/worker.service';
+import { fadeInOut } from '@core/utils/route.animation';
 
 @Component({
   selector: 'ngxtemplate-root',

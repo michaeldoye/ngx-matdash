@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { routeAnimation, spinInOut } from '../../route.animation';
-import { AuthService } from '../../core/auth/auth.service';
+import { AuthService } from '@core/auth/auth.service';
+import { routeAnimation, spinInOut } from '@core/utils/route.animation';
 
 @Component({
   selector: 'ngxtemplate-login-page',
