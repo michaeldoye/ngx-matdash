@@ -21,7 +21,7 @@ export class WorkerService {
 
   private promptUser(e): void {
     let snackBarRef = this.snackBar.open(
-      'A new version of Domains is available', 
+      'A new version is available', 
       'Refresh',
       {horizontalPosition: 'left'}
     );

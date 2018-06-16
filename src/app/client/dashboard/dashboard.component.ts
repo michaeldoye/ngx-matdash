@@ -4,7 +4,7 @@ import { flyInOut } from '../../route.animation';
 @Component({
   selector: 'client/dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  styleUrls: ['./dashboard.component.scss'],
   animations: [flyInOut]
 })
 export class DashboardComponent {

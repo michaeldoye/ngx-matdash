@@ -6,17 +6,12 @@ import { AuthService } from '../../core/auth/auth.service';
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
-  host: {
-    '[@routeAnimation]': 'true'
-  },
-  animations: [ 
-    routeAnimation,
-    spinInOut
-  ]
+  host: {'[@routeAnimation]': 'true'},
+  animations: [routeAnimation, spinInOut]
 })
 export class LoginPageComponent implements OnInit {
 
-  public hide: boolean;
+  public hide: boolean = true;
   public email: string = '';
   public password: string = '';
   public rememberMe: boolean =  true;

@@ -5,12 +5,5 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class LoadingService {
-
   public isLoading = new BehaviorSubject<boolean>(false);
-
-  constructor() { }
-
-  setLoader(status) {
-    this.isLoading.next(status);
-  }
 }

@@ -11,6 +11,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { RoutingModule } from '../app.routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   imports: [
@@ -30,13 +31,15 @@ import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButt
     HomeComponent,
     LoginPageComponent,
     SidenavComponent,
-    DashboardComponent
+    DashboardComponent,
+    ToolbarComponent
   ],
   providers: [AngularFireAuth],
   exports: [
     HomeComponent,
     LoginPageComponent,
-    SidenavComponent
+    SidenavComponent,
+    ToolbarComponent
   ]
 })
 export class ClientModule { }
