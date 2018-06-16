@@ -1,6 +1,6 @@
 {
-  "name": "domains",
-  "short_name": "domains",
+  "name": "ngxtemplate",
+  "short_name": "ngxtemplate",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

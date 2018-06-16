@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { spinInOut, preventInitial } from '../../route.animation';
 
 @Component({
-  selector: 'app-toolbar',
+  selector: 'ngxtemplate-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
   animations: [spinInOut, preventInitial]

@@ -1,10 +1,10 @@
 <div class="container" [class.light-blue-theme]="!theme.isDarkTheme" [class.dark-theme]="theme.isDarkTheme">
 
-  <app-toolbar [appTitle]="title"></app-toolbar>
+  <ngxtemplate-toolbar [appTitle]="title"></ngxtemplate-toolbar>
 
   <mat-progress-bar class="loader" *ngIf="loader.isLoading | async" color="accent" mode="indeterminate"></mat-progress-bar>
 
-  <app-sidenav></app-sidenav>    
+  <ngxtemplate-sidenav></ngxtemplate-sidenav>    
 
   <div *ngIf="!network.isOnline" [@fadeInOut] class="offline-notification">
     Offline; Please check your connection.

@@ -6,7 +6,7 @@ import { fadeInOut } from './route.animation';
 import { LoadingService } from './core/utils/loading.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'ngxtemplate-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [fadeInOut]

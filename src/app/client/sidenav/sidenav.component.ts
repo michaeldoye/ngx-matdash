@@ -4,7 +4,7 @@ import { MatSidenav } from '@angular/material';
 import { SidenavService } from '../../client/sidenav/sidenav.service';
 
 @Component({
-  selector: 'app-sidenav',
+  selector: 'ngxtemplate-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss']
 })

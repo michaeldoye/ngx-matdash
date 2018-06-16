@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { flyInOut } from '../../route.animation';
 
 @Component({
-  selector: 'client/dashboard',
+  selector: 'ngxtemplate-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   animations: [flyInOut]

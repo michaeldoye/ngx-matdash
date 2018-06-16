@@ -3,7 +3,7 @@ import { routeAnimation, spinInOut } from '../../route.animation';
 import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
-  selector: 'app-login-page',
+  selector: 'ngxtemplate-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
   host: {'[@routeAnimation]': 'true'},
