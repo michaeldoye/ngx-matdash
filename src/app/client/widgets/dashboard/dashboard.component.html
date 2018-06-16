@@ -1,24 +1,90 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile [@flyInOut]="true" *ngFor="let card of cards" [colspan]="card.cols" [rowspan]="card.rows">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+
+
+  <div fxLayout="row wrap" fxLayoutAlign="space-between stretch" fxLayoutGap="10px" [@flyInOut]="true">
+    <mat-card class="dashboard-card" fxFlex="48%">
+      <mat-card-header>
+        <mat-card-title class="card-title">
+          <span>Card 1</span>
+          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>        
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content class="dashboard-card-content">
+        <ngxtemplate-bar-chart [data]="chardata"></ngxtemplate-bar-chart>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-card" fxFlex="48%" [@flyInOut]="true">
+      <mat-card-header>
+        <mat-card-title class="card-title">
+          <span>Card 2</span>
+          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>        
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content class="dashboard-card-content">
+        <ngxtemplate-status-card [data]="chardata"></ngxtemplate-status-card>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  <div fxLayout="row wrap" fxLayoutAlign="space-between stretch" [@flyInOut]="true">
+    <mat-card class="dashboard-card" fxFlex="100%">
+      <mat-card-header>
+        <mat-card-title class="card-title">
+          <span>Card 3</span>
+          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>        
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content class="dashboard-card-content">
+        <ngxtemplate-advanced-pie-chart [data]="chardata"></ngxtemplate-advanced-pie-chart>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+  <div fxLayout="row wrap" fxLayoutAlign="space-between stretch" fxLayoutGap="10px" [@flyInOut]="true">
+    <mat-card class="dashboard-card" fxFlex="48%">
+      <mat-card-header>
+        <mat-card-title class="card-title">
+          <span>Card 4</span>
+          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>        
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content class="dashboard-card-content">
+        <ngxtemplate-pie-chart [data]="chardata"></ngxtemplate-pie-chart>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-card" fxFlex="48%">
+      <mat-card-header>
+        <mat-card-title class="card-title">
+          <span>Card 5</span>
+          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>        
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content class="dashboard-card-content">
+        <ngxtemplate-gauge-chart [data]="chardata"></ngxtemplate-gauge-chart>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <button mat-menu-item>Expand</button>
+  <button mat-menu-item>Remove</button>
+</mat-menu>

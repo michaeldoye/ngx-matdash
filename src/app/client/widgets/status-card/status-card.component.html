@@ -1,0 +1,11 @@
+<ngx-charts-number-card
+  *ngIf="data.data"
+  [view]="data.options.view"
+  (legendLabelClick)="onSelect($event)"
+  cardColor="#232837"
+  emptyColor="#1e222e"
+  [results]="data.data"
+  (select)="onSelect($event)"
+  [valueFormatting]="statusValueFormat"
+  [labelFormatting]="statusLabelFormat">
+</ngx-charts-number-card>

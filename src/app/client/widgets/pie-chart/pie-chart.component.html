@@ -1,0 +1,12 @@
+<ngx-charts-pie-chart
+  *ngIf="data.data"
+  class="chart-container"
+  [view]="data.options.view"
+  [results]="data.data"
+  [legend]="data.options.showLegend"
+  [labels]="true"
+  (legendLabelClick)="onSelect($event)"
+  [gradient]="data.options.gradient"
+  (dblclick)="onSelect($event)"
+  (select)="onSelect($event)">
+</ngx-charts-pie-chart>
