@@ -7,7 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class BarChartComponent {
 
-  @Input() data: any; 
+  @Input() data: any;
+  @Input() cardTitle: string;
 
   onSelect(event) {
     console.log(event);

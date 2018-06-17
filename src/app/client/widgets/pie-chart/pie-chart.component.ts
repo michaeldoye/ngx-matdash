@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class PieChartComponent {
 
   @Input() data: any; 
+  @Input() cardTitle: string;
 
   onSelect(event) {
     console.log(event);

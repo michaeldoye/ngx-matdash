@@ -1,4 +1,20 @@
 :host {
   display: inline-flex;
   width: 100%;
+  
+  .dashboard-card {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  
+  .more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  
+  .dashboard-card-content {
+    text-align: center;
+    padding-top: 20px;
+  }
 }

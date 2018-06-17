@@ -9,7 +9,6 @@ export let slideAnimation = trigger('slideAnimation', [
     }),
     group([
       animate('500ms ease-in-out', style({
-        //transform: 'translate3d(0, 0, 0)',
         transform: 'translate3d(0, 0, 0)',
         opacity: 1,
       })),
@@ -44,6 +43,7 @@ export let fadeInAnimation = trigger('fadeInAnimation', [
   ]),
 ]);
 
+
 export let flyInOut = trigger('flyInOut', [
   state('in', style({transform: 'translateX(0)'})),
   transition('void => *', [
@@ -53,7 +53,8 @@ export let flyInOut = trigger('flyInOut', [
   transition('* => void', [
     animate(300, style({transform: 'translateY(100%)'}))
   ])
-])
+]);
+
 
 export let fadeInOut = trigger('fadeInOut', [
   state('in', style({opacity: 0})),
@@ -69,7 +70,8 @@ export let fadeInOut = trigger('fadeInOut', [
         animate('400ms ease-in-out', style({'opacity': '1'}))
     ])
   ])
-])
+]);
+
 
 export let spinInOut = trigger('spinInOut', [
   state('in', style({transform: 'rotate(0)', opacity: '1'})),
@@ -80,10 +82,11 @@ export let spinInOut = trigger('spinInOut', [
   transition(':leave', [
     animate('150ms ease', style({transform: 'rotate(180deg)', opacity: '0'}))
   ]),
-])
+]);
+
 
 export let preventInitial = trigger('preventInitial', [
   transition(':enter', [
     query(':enter', [], {optional: true})
   ]),
-])
+]);

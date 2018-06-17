@@ -1,22 +1,42 @@
-<ngx-charts-gauge
-  *ngIf="data.data"
-  class="chart-container"
-  [view]="data.options.view"
-  [legend]="data.options.showLegend"
-  [legendTitle]="data.options.legendTitle"
-  [results]="data.data"
-  [animations]="data.options.animations"
-  [textValue]="data.options.gaugeTextValue"
-  [min]="data.gaugeOptons.gaugeMin"
-  [max]="data.gaugeOptons.gaugeMax"
-  [units]="data.gaugeOptons.gaugeUnits"
-  [angleSpan]="data.gaugeOptons.gaugeAngleSpan"
-  [startAngle]="data.gaugeOptons.gaugeStartAngle"
-  [showAxis]="data.gaugeOptons.gaugeShowAxis"
-  [bigSegments]="data.gaugeOptons.gaugeLargeSegments"
-  [smallSegments]="data.gaugeOptons.gaugeSmallSegments"
-  [margin]="data.options.margin ? [marginTop, marginRight, marginBottom, marginLeft] : null"
-  [tooltipDisabled]="data.options.tooltipDisabled"
-  (select)="onSelect($event)"
-  (legendLabelClick)="onSelect($event)">
-</ngx-charts-gauge>
+<mat-card class="dashboard-card" fxFlex="100%">
+  <mat-card-header>
+    <mat-card-title class="card-title">
+      <span>{{ cardTitle }}</span>
+      <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>        
+    </mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="dashboard-card-content">
+
+    <ngx-charts-gauge
+      *ngIf="data.data"
+      class="chart-container"
+      [view]="data.options.view"
+      [legend]="data.options.showLegend"
+      [legendTitle]="data.options.legendTitle"
+      [results]="data.data"
+      [animations]="data.options.animations"
+      [textValue]="data.options.gaugeTextValue"
+      [min]="data.gaugeOptons.gaugeMin"
+      [max]="data.gaugeOptons.gaugeMax"
+      [units]="data.gaugeOptons.gaugeUnits"
+      [angleSpan]="data.gaugeOptons.gaugeAngleSpan"
+      [startAngle]="data.gaugeOptons.gaugeStartAngle"
+      [showAxis]="data.gaugeOptons.gaugeShowAxis"
+      [bigSegments]="data.gaugeOptons.gaugeLargeSegments"
+      [smallSegments]="data.gaugeOptons.gaugeSmallSegments"
+      [margin]="data.options.margin ? [marginTop, marginRight, marginBottom, marginLeft] : null"
+      [tooltipDisabled]="data.options.tooltipDisabled"
+      (select)="onSelect($event)"
+      (legendLabelClick)="onSelect($event)">
+    </ngx-charts-gauge>
+
+  </mat-card-content>
+</mat-card>
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <button mat-menu-item>Expand</button>
+  <button mat-menu-item>Remove</button>
+</mat-menu>

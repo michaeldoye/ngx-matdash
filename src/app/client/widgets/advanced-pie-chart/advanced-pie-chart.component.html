@@ -1,8 +1,28 @@
-<ngx-charts-advanced-pie-chart style="width: 100%; min-height: 300px"
-  *ngIf="data.data"
-  class="chart-container"
-  [results]="data.data"
-  (legendLabelClick)="onSelect($event)"
-  [gradient]="gradient"
-  (select)="onSelect($event)">
-</ngx-charts-advanced-pie-chart>
+<mat-card class="dashboard-card" fxFlex="100%">
+  <mat-card-header>
+    <mat-card-title class="card-title">
+      <span>{{ cardTitle }}</span>
+      <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>        
+    </mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="dashboard-card-content">
+
+    <ngx-charts-advanced-pie-chart style="width:100%;min-height:300px;display:inline-flex;"
+      *ngIf="data.data"
+      class="chart-container"
+      [results]="data.data"
+      (legendLabelClick)="onSelect($event)"
+      [gradient]="gradient"
+      (select)="onSelect($event)">
+    </ngx-charts-advanced-pie-chart>
+
+  </mat-card-content>
+</mat-card>
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <button mat-menu-item>Expand</button>
+  <button mat-menu-item>Remove</button>
+</mat-menu>

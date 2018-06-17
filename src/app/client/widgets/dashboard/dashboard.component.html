@@ -1,90 +1,20 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
 
-
   <div fxLayout="row wrap" fxLayoutAlign="space-between stretch" fxLayoutGap="10px" [@flyInOut]="true">
-    <mat-card class="dashboard-card" fxFlex="48%">
-      <mat-card-header>
-        <mat-card-title class="card-title">
-          <span>Card 1</span>
-          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>        
-        </mat-card-title>
-      </mat-card-header>
-      <mat-divider></mat-divider>
-      <mat-card-content class="dashboard-card-content">
-        <ngxtemplate-bar-chart [data]="chardata"></ngxtemplate-bar-chart>
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="dashboard-card" fxFlex="48%" [@flyInOut]="true">
-      <mat-card-header>
-        <mat-card-title class="card-title">
-          <span>Card 2</span>
-          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>        
-        </mat-card-title>
-      </mat-card-header>
-      <mat-divider></mat-divider>
-      <mat-card-content class="dashboard-card-content">
-        <ngxtemplate-status-card [data]="chardata"></ngxtemplate-status-card>
-      </mat-card-content>
-    </mat-card>
+    <ngxtemplate-bar-chart [data]="chardata" cardTitle="Bar Chart"></ngxtemplate-bar-chart>
+    <ngxtemplate-status-card [data]="chardata" cardTitle="Status Cards"></ngxtemplate-status-card>
   </div>
-  
+
   <div fxLayout="row wrap" fxLayoutAlign="space-between stretch" [@flyInOut]="true">
-    <mat-card class="dashboard-card" fxFlex="100%">
-      <mat-card-header>
-        <mat-card-title class="card-title">
-          <span>Card 3</span>
-          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>        
-        </mat-card-title>
-      </mat-card-header>
-      <mat-divider></mat-divider>
-      <mat-card-content class="dashboard-card-content">
-        <ngxtemplate-advanced-pie-chart [data]="chardata"></ngxtemplate-advanced-pie-chart>
-      </mat-card-content>
-    </mat-card>
+    <ngxtemplate-advanced-pie-chart 
+      [data]="chardata" 
+      cardTitle="Advanced Pie Chart">
+    </ngxtemplate-advanced-pie-chart>
   </div>
-
 
   <div fxLayout="row wrap" fxLayoutAlign="space-between stretch" fxLayoutGap="10px" [@flyInOut]="true">
-    <mat-card class="dashboard-card" fxFlex="48%">
-      <mat-card-header>
-        <mat-card-title class="card-title">
-          <span>Card 4</span>
-          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>        
-        </mat-card-title>
-      </mat-card-header>
-      <mat-divider></mat-divider>
-      <mat-card-content class="dashboard-card-content">
-        <ngxtemplate-pie-chart [data]="chardata"></ngxtemplate-pie-chart>
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="dashboard-card" fxFlex="48%">
-      <mat-card-header>
-        <mat-card-title class="card-title">
-          <span>Card 5</span>
-          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>        
-        </mat-card-title>
-      </mat-card-header>
-      <mat-divider></mat-divider>
-      <mat-card-content class="dashboard-card-content">
-        <ngxtemplate-gauge-chart [data]="chardata"></ngxtemplate-gauge-chart>
-      </mat-card-content>
-    </mat-card>
+    <ngxtemplate-pie-chart [data]="chardata" cardTitle="Pie Chart"></ngxtemplate-pie-chart>
+    <ngxtemplate-gauge-chart [data]="chardata" cardTitle="Gauge Chart"></ngxtemplate-gauge-chart>
   </div>
-
-<mat-menu #menu="matMenu" xPosition="before">
-  <button mat-menu-item>Expand</button>
-  <button mat-menu-item>Remove</button>
-</mat-menu>
+</div>
