@@ -1,33 +1,33 @@
 import { NgModule } from '@angular/core';
-import { 
-  MatCheckboxModule, 
-  MatDialogModule, 
-  MatToolbarModule, 
-  MatButtonModule, 
-  MatSidenavModule, 
-  MatIconModule, 
-  MatListModule, 
-  MatGridListModule, 
-  MatCardModule, 
-  MatMenuModule, 
-  MatTableModule, 
-  MatPaginatorModule, 
-  MatSortModule, 
-  MatBottomSheetModule, 
-  MatTooltipModule, 
+import {
+  MatCheckboxModule,
+  MatDialogModule,
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatGridListModule,
+  MatCardModule,
+  MatMenuModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatBottomSheetModule,
+  MatTooltipModule,
   MatFormFieldModule,
-  MatInputModule, 
-  MatDatepickerModule, 
-  MatNativeDateModule, 
-  MatProgressSpinnerModule, 
-  MatProgressBarModule, 
-  MatSnackBarModule, 
-  MatBadgeModule, 
-  MatChipsModule, 
-  MatSelectModule, 
-  MAT_SNACK_BAR_DEFAULT_OPTIONS, 
-  MatTabsModule, 
-  MatSlideToggleModule 
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
+  MatSnackBarModule,
+  MatBadgeModule,
+  MatChipsModule,
+  MatSelectModule,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatTabsModule,
+  MatSlideToggleModule
 } from '@angular/material';
 
 @NgModule({
@@ -58,7 +58,7 @@ import {
     MatChipsModule,
     MatSelectModule,
     MatTabsModule,
-    MatSlideToggleModule,
+    MatSlideToggleModule
   ],
   exports: [
     MatToolbarModule,
@@ -87,8 +87,8 @@ import {
     MatChipsModule,
     MatSelectModule,
     MatTabsModule,
-    MatSlideToggleModule,
-  ],  
+    MatSlideToggleModule
+  ],
   declarations: []
 })
-export class MaterialModule { }
+export class MaterialModule {}

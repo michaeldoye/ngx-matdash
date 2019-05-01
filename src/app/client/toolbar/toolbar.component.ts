@@ -3,6 +3,7 @@ import { ThemeService } from '../../core/utils/theme.service';
 import { SidenavService } from '../sidenav/sidenav.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { spinInOut, preventInitial } from '../../route.animation';
+import { GapiAuthService } from '../../core/auth/gapiAuth.service';
 
 @Component({
   selector: 'ngxtemplate-toolbar',
@@ -11,13 +12,12 @@ import { spinInOut, preventInitial } from '../../route.animation';
   animations: [spinInOut, preventInitial]
 })
 export class ToolbarComponent {
-
   @Input() appTitle: string;
 
   constructor(
     public theme: ThemeService,
     public sidenav: SidenavService,
-    public auth: AngularFireAuth
-  ) { }
-
+    public auth: AngularFireAuth,
+    public gAuth: GapiAuthService
+  ) {}
 }

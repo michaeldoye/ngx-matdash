@@ -1,24 +1,21 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile [@flyInOut]="true" *ngFor="let card of cards" [colspan]="card.cols" [rowspan]="card.rows">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
+    <mat-card class="dashboard-card" [@flyInOut]="true">
+      <mat-card-header>
+        <mat-card-title>
+           Choose a file to import
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content class="dashboard-card-content">
+        <div>
+          <mat-action-list *ngIf="files.length" dense>
+            <button mat-list-item *ngFor="let file of files" (click)="importSheet(file.id)">
+              <mat-icon mat-list-icon>insert_drive_file</mat-icon>
+              {{ file.name }}
             </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+          </mat-action-list>
+        </div>
+      </mat-card-content>
+    </mat-card>
 </div>

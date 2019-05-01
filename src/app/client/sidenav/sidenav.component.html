@@ -1,14 +1,15 @@
-<mat-sidenav-container [hasBackdrop]="(sv.isHandset | async)!.matches">
-  <mat-sidenav 
-    #sidenav 
-    mode="over"
-    opened="false" 
-    class="sidenav">
-
+<mat-sidenav-container [hasBackdrop]="true">
+  <mat-sidenav #sidenav mode="over" opened="false" class="sidenav">
     <mat-nav-list class="nav-list">
       <mat-list-item>
         <mat-icon matListIcon>exit_to_app</mat-icon>
-        <a [style.outline]="'none'" matLine (click)="sidenav.close()" routerLink="login">Logout</a>
+        <a
+          [style.outline]="'none'"
+          matLine
+          (click)="sidenav.close()"
+          routerLink="login"
+          >Logout</a
+        >
       </mat-list-item>
 
       <mat-list-item>
@@ -17,7 +18,8 @@
           labelPosition="before"
           [checked]="theme.isDarkTheme"
           color="primary"
-          (change)="theme.changeTheme()">
+          (change)="theme.changeTheme()"
+        >
           Night Mode
         </mat-slide-toggle>
       </mat-list-item>

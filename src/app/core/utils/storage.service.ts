@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class StorageService {
-
-  constructor() { }
+  constructor() {}
 
   set(key: string, data: any): void {
     try {
@@ -25,8 +24,8 @@ export class StorageService {
   }
 
   clearAll() {
-    try{
-      localStorage.clear();      
+    try {
+      localStorage.clear();
     } catch (e) {
       console.error('Error clearing data from localStorage', e);
     }

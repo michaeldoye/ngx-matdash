@@ -7,11 +7,11 @@ import { MatSnackBar } from '@angular/material';
   providedIn: 'root'
 })
 export class WorkerService {
-
   constructor(public updates: SwUpdate, public snackBar: MatSnackBar) {
     if (updates.isEnabled) {
-      interval(6 * 60 * 60).subscribe(() => updates.checkForUpdate()
-        .then(() => console.log('checking for updates')));
+      interval(6 * 60 * 60).subscribe(() =>
+        updates.checkForUpdate().then(() => console.log('checking for updates'))
+      );
     }
   }
 
@@ -20,12 +20,15 @@ export class WorkerService {
   }
 
   private promptUser(e): void {
-    let snackBarRef = this.snackBar.open(
-      'A new version is available', 
+    const snackBarRef = this.snackBar.open(
+      'A new version is available',
       'Refresh',
-      {horizontalPosition: 'left'}
+      { horizontalPosition: 'left' }
     );
-    snackBarRef.onAction().subscribe(() => 
-      this.updates.activateUpdate().then(() => document.location.reload()));
-  }  
+    snackBarRef
+      .onAction()
+      .subscribe(() =>
+        this.updates.activateUpdate().then(() => document.location.reload())
+      );
+  }
 }

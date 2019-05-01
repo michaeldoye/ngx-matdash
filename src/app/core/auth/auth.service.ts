@@ -5,30 +5,30 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { LoadingService } from '../utils/loading.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   constructor(
     public afAuth: AngularFireAuth,
     private loading: LoadingService,
     private router: Router,
-    private sb: MatSnackBar,
-  ) { }
+    private sb: MatSnackBar
+  ) {}
 
   public emailSignUp(email: string, password: string): Promise<any> {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((user) => this.handleNewUser(user))
-      .catch((error) => this.loginResultNotificaton(error));
+    return this.afAuth.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(user => this.handleNewUser(user))
+      .catch(error => this.loginResultNotificaton(error));
   }
 
   public emailLogin(email: string, password: string): Promise<any> {
     this.loading.isLoading.next(true);
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((user) => this.handleLogin(user))
-      .catch((error) => this.loginResultNotificaton(error));
+    return this.afAuth.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(user => this.handleLogin(user))
+      .catch(error => this.loginResultNotificaton(error));
   }
 
   public googleLogin(): Promise<any> {
@@ -53,9 +53,10 @@ export class AuthService {
 
   private socialSignIn(provider: any): Promise<any> {
     this.loading.isLoading.next(true);
-    return this.afAuth.auth.signInWithPopup(provider)
-      .then((user) => this.handleLogin(user))
-      .catch((error) => this.loginResultNotificaton(error));
+    return this.afAuth.auth
+      .signInWithPopup(provider)
+      .then(user => this.handleLogin(user))
+      .catch(error => this.loginResultNotificaton(error));
   }
 
   private handleLogin(user: any) {
@@ -71,10 +72,6 @@ export class AuthService {
 
   private loginResultNotificaton(message: string) {
     this.loading.isLoading.next(false);
-    this.sb.open(
-      message,
-      'OK',
-      {duration: 7000, horizontalPosition: 'left'}
-    );
+    this.sb.open(message, 'OK', { duration: 7000, horizontalPosition: 'left' });
   }
 }

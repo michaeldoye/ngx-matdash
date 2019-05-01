@@ -6,10 +6,12 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class ThemeService {
-
   public isDarkTheme: boolean;
 
-  constructor(public overlayContainer: OverlayContainer, private storage: StorageService) { 
+  constructor(
+    public overlayContainer: OverlayContainer,
+    private storage: StorageService
+  ) {
     this.isDarkTheme = this.storage.get('isDarkTheme') || false;
     if (this.storage.get('isDarkTheme')) {
       this.overlayContainer.getContainerElement().classList.add('dark-theme');
@@ -18,12 +20,14 @@ export class ThemeService {
 
   public changeTheme(): void {
     this.isDarkTheme = !this.isDarkTheme;
-    if(this.isDarkTheme) {
+    if (this.isDarkTheme) {
       this.overlayContainer.getContainerElement().classList.add('dark-theme');
       this.storage.set('isDarkTheme', true);
     } else {
-      this.overlayContainer.getContainerElement().classList.remove('dark-theme');
+      this.overlayContainer
+        .getContainerElement()
+        .classList.remove('dark-theme');
       this.storage.set('isDarkTheme', false);
-    }   
+    }
   }
 }

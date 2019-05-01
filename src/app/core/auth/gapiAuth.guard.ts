@@ -1,37 +1,28 @@
 import { Injectable } from '@angular/core';
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  Router
-} from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { map, take } from 'rxjs/operators';
+import { GapiAuthService } from './gapiAuth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminAuthGuard implements CanActivate {
+export class GapiAuthGuard implements CanActivate {
   constructor(
     private rt: Router,
     private sb: MatSnackBar,
-    public auth: AngularFireAuth
+    public auth: AngularFireAuth,
+    private gAuth: GapiAuthService
   ) {}
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-    return this.auth.authState.pipe(
-      map(auth => {
-        if (!auth) {
-          this.rt.navigate(['/login']);
-          this.noAccessNotificaton();
-          return false;
-        }
-        return true;
-      }),
-      take(1)
-    );
+    if (!this.gAuth.isSignedIn) {
+      this.rt.navigate(['/login']);
+      this.noAccessNotificaton();
+      return false;
+    }
+    return true;
   }
 
   noAccessNotificaton() {

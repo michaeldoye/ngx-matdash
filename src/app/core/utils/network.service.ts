@@ -6,7 +6,6 @@ import { mapTo } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class NetworkService {
-
   private online$: Observable<boolean>;
   private _isOnline: boolean;
 
@@ -15,11 +14,11 @@ export class NetworkService {
       of(navigator.onLine),
       fromEvent(window, 'online').pipe(mapTo(true)),
       fromEvent(window, 'offline').pipe(mapTo(false))
-    )
-    this.online$.subscribe(s => this._isOnline = s);    
+    );
+    this.online$.subscribe(s => (this._isOnline = s));
   }
 
   public get isOnline(): boolean {
-    return this._isOnline; 
+    return this._isOnline;
   }
 }

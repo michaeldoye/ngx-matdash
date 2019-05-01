@@ -12,16 +12,15 @@ import { LoadingService } from './core/utils/loading.service';
   animations: [fadeInOut]
 })
 export class AppComponent {
-
   public title = 'App Title';
 
   constructor(
     public theme: ThemeService,
     public network: NetworkService,
     public loader: LoadingService,
-    private sw: WorkerService) {
-
-      // check the service worker for updates
-      this.sw.checkForUpdates();
+    private sw: WorkerService
+  ) {
+    // check the service worker for updates
+    this.sw.checkForUpdates();
   }
 }

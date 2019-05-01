@@ -10,7 +10,13 @@ import { SatPopoverModule } from '@ncstate/sat-popover';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { RoutingModule } from '../app.routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
+import {
+  MatGridListModule,
+  MatCardModule,
+  MatMenuModule,
+  MatIconModule,
+  MatButtonModule
+} from '@angular/material';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
@@ -19,7 +25,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     FormsModule,
     MaterialModule,
     FlexLayoutModule,
-    SatPopoverModule ,
+    SatPopoverModule,
     RoutingModule,
     MatGridListModule,
     MatCardModule,
@@ -42,4 +48,4 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     ToolbarComponent
   ]
 })
-export class ClientModule { }
+export class ClientModule {}
