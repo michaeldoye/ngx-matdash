@@ -11,10 +11,10 @@ import { AuthService } from '../../core/auth/auth.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  public hide: boolean = true;
-  public email: string = '';
-  public password: string = '';
-  public rememberMe: boolean =  true;
+  public hide = true;
+  public email = '';
+  public password = '';
+  public rememberMe =  true;
 
   constructor(public auth: AuthService) { }
 

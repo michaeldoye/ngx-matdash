@@ -8,9 +8,9 @@ import { CoreModule } from './core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientModule } from './client/client.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AngularFireModule } from 'angularfire2';
-import { firebaseEnvironment, environment } from '../environments/environment';
+import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AngularFireModule } from 'angularfire2';
 
 @NgModule({
   declarations: [
@@ -20,12 +20,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule,    
+    ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule,
     CoreModule,
     ClientModule,
-    AngularFireModule.initializeApp(firebaseEnvironment.firebase),
+    AngularFireModule.initializeApp(environment.firebase),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
