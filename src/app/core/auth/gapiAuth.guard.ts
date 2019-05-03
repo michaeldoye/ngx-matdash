@@ -18,15 +18,16 @@ export class GapiAuthGuard implements CanActivate {
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.gAuth.isSignedIn) {
-      this.rt.navigate(['/login']);
-      this.noAccessNotificaton();
+      this.rt.navigate(['/login']).then(() => {
+        this.noAccessNotificaton();
+      });
       return false;
     }
     return true;
   }
 
   noAccessNotificaton() {
-    this.sb.open('Error; You do not have permission to access this page', '', {
+    this.sb.open('You do not have permission to access this page', '', {
       duration: 7000,
       horizontalPosition: 'left'
     });

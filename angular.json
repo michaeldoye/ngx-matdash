@@ -34,7 +34,9 @@
               "src/styles.scss",
               "src/custom-theme.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/scripts/radar.js"
+            ]
           },
           "configurations": {
             "production": {

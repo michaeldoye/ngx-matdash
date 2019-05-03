@@ -1,21 +1,42 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
-    <mat-card class="dashboard-card" [@flyInOut]="true">
-      <mat-card-header>
-        <mat-card-title>
-           Choose a file to import
-        </mat-card-title>
-      </mat-card-header>
-      <mat-divider></mat-divider>
-      <mat-card-content class="dashboard-card-content">
-        <div>
-          <mat-action-list *ngIf="files.length" dense>
-            <button mat-list-item *ngFor="let file of files" (click)="importSheet(file.id)">
-              <mat-icon mat-list-icon>insert_drive_file</mat-icon>
-              {{ file.name }}
-            </button>
-          </mat-action-list>
-        </div>
-      </mat-card-content>
-    </mat-card>
+  <mat-form-field>
+    <mat-label>Select an option</mat-label>
+    <mat-select
+      [(value)]="selectedFileId"
+      (selectionChange)="importSheet($event)"
+    >
+      <mat-option>None</mat-option>
+      <mat-option [value]="file.id" *ngFor="let file of files">
+        {{ file.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-card [@flyInOut]="true" *ngIf="showRadar">
+    <svg id="radar" />
+  </mat-card>
 </div>
+
+<ng-template #sheetPickerDialog>
+  <p>Select a sheet to import from Drive</p>
+  <mat-form-field class="dialog-picker">
+    <mat-label>Select an option</mat-label>
+    <mat-select
+      [(value)]="selectedFileId"
+      (selectionChange)="importSheet($event)"
+    >
+      <mat-option>None</mat-option>
+      <mat-option [value]="file.id" *ngFor="let file of files">
+        {{ file.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <p>
+    <small
+      >Don't see any Sheets?
+      <a href="mailto:mdoye@mobiquityinc.com?subject=Tech Radar" mat-button
+        >Request Access</a
+      ></small
+    >
+  </p>
+</ng-template>

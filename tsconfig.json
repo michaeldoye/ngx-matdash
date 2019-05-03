@@ -20,7 +20,9 @@
     ],
     "types": [
       "gapi",
-      "gapi.auth2"
+      "gapi.auth2",
+      "gapi.client.drive",
+      "gapi.client.sheets"
     ],
     "lib": [
       "es2018",

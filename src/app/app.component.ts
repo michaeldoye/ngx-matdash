@@ -12,7 +12,7 @@ import { LoadingService } from './core/utils/loading.service';
   animations: [fadeInOut]
 })
 export class AppComponent {
-  public title = 'App Title';
+  public title = 'tech radar';
 
   constructor(
     public theme: ThemeService,

@@ -6,12 +6,18 @@
       fxLayout="row"
       fxLayoutAlign="center center"
     >
-      <mat-icon>input</mat-icon>&nbsp;
+      <mat-icon>announcement</mat-icon>&nbsp;
       <h3>Authentication Required</h3>
     </mat-toolbar>
+    <div class="login-content">
+      <p>
+        <strong>Hey there Mobster</strong>
+      </p>
+      <p>Please sign in with your Mobiquity account to view this content.</p>
+    </div>
     <div class="auth-container" fxLayout="row" fxLayoutAlign="center center">
-      <button color="accent" mat-raised-button (click)="signIn()">
-        SIGN IN WITH GOOGLE
+      <button color="primary" mat-raised-button (click)="signIn()">
+        <i class="fab fa-google"></i> &nbsp; SIGN IN WITH GOOGLE
       </button>
     </div>
   </div>
