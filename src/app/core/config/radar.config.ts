@@ -37,7 +37,7 @@ export interface RadarEntries {
 
 export const QUADRANTS = [
   { name: 'platforms', index: 0 },
-  { name: 'Infrastructure', index: 1 },
+  { name: 'techniques', index: 1 },
   { name: 'languages and frameworks', index: 2 },
   { name: 'tool', index: 3 }
 ];
@@ -52,7 +52,7 @@ export const RINGS = [
 export const radarConfig: RadarConfig = {
   svg_id: 'radar',
   width: 1380,
-  height: 800,
+  height: 900,
   colors: {
     background: '#fff',
     grid: '#bbb',
@@ -62,7 +62,7 @@ export const radarConfig: RadarConfig = {
   title: 'My Radar',
   quadrants: [
     { name: 'platforms' },
-    { name: 'Infrastructure' },
+    { name: 'techniques' },
     { name: 'languages and frameworks' },
     { name: 'tool' }
   ],

@@ -5,6 +5,7 @@ import { LoadingService } from '../../core/utils/loading.service';
 import { Router } from '@angular/router';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'ngxtemplate-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],

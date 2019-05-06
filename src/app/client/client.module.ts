@@ -4,7 +4,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SatPopoverModule } from '@ncstate/sat-popover';
 import { SidenavComponent } from './sidenav/sidenav.component';
@@ -40,7 +39,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     DashboardComponent,
     ToolbarComponent
   ],
-  providers: [AngularFireAuth],
   exports: [
     HomeComponent,
     LoginPageComponent,

@@ -30,7 +30,6 @@
     "@types/gapi.auth2": "0.0.50",
     "@types/gapi.client.drive": "^3.0.3",
     "@types/gapi.client.sheets": "^4.0.1",
-    "angularfire2": "^5.0.0-rc.9",
     "core-js": "^3.0.1",
     "firebase": "^4.13.1",
     "hammerjs": "^2.0.8",

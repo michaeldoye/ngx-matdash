@@ -10,7 +10,6 @@ import { ClientModule } from './client/client.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { AngularFireModule } from 'angularfire2';
 import { GapiAuthService } from './core/auth/gapiAuth.service';
 
 export function initGapi(gapiSession: GapiAuthService) {
@@ -28,7 +27,6 @@ export function initGapi(gapiSession: GapiAuthService) {
     FlexLayoutModule,
     CoreModule,
     ClientModule,
-    AngularFireModule.initializeApp(environment.firebase),
     ServiceWorkerModule.register('/ngsw-worker.js', {
       enabled: environment.production
     })

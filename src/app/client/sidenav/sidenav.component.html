@@ -11,18 +11,6 @@
           >Logout</a
         >
       </mat-list-item>
-
-      <mat-list-item>
-        <mat-slide-toggle
-          #themeToggle
-          labelPosition="before"
-          [checked]="theme.isDarkTheme"
-          color="primary"
-          (change)="theme.changeTheme()"
-        >
-          Night Mode
-        </mat-slide-toggle>
-      </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="content">

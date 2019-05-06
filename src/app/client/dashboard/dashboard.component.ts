@@ -1,4 +1,4 @@
-import { Component, NgZone, TemplateRef, ViewChild } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { flyInOut } from '../../route.animation';
 import { GapiAuthService } from '../../core/auth/gapiAuth.service';
 import { LoadingService } from '../../core/utils/loading.service';
@@ -6,7 +6,8 @@ import { MatDialog, MatSelectChange } from '@angular/material';
 import {
   QUADRANTS,
   RadarConfig,
-  radarConfig, RadarEntries,
+  radarConfig,
+  RadarEntries,
   RINGS
 } from '../../core/config/radar.config';
 
@@ -26,10 +27,10 @@ export class DashboardComponent {
   public selectedFileId: string;
   public showRadar: boolean;
   @ViewChild('sheetPickerDialog') sheetPickerDialog: TemplateRef<any>;
+  @ViewChild('errorDialog') errorDialog: TemplateRef<any>;
 
   constructor(
     private gAuth: GapiAuthService,
-    private zone: NgZone,
     private loader: LoadingService,
     public dialog: MatDialog
   ) {
@@ -44,7 +45,7 @@ export class DashboardComponent {
         file.mimeType === MIME_TYPE &&
         file.name.toLowerCase().indexOf('radar') > -1
     );
-    this.dialog.open(this.sheetPickerDialog);
+    this.dialog.open(this.sheetPickerDialog, { disableClose: true });
     this.loader.isLoading.next(false);
   }
 
@@ -53,7 +54,7 @@ export class DashboardComponent {
     this.loader.isLoading.next(true);
     const spreadSheet = await this.gAuth.getFile(event.value, 'A2:E');
     Object.assign(radarConfig, {
-      entries: this.getRadarEntries(spreadSheet.result.values),
+      entries: this.mapRadarEntries(spreadSheet.result.values),
       title: event.source.triggerValue
     });
     this.showRadar = true;
@@ -62,15 +63,32 @@ export class DashboardComponent {
     this.dialog.closeAll();
   }
 
-  private getRadarEntries(values: any[]): RadarEntries[] {
+  private mapRadarEntries(values: any[]): RadarEntries[] {
     const radarEntries = values.map(value => {
       return {
         label: value[0],
-        quadrant: QUADRANTS.find(q => q.name === value[2]).index,
-        ring: RINGS.find(r => r.name === value[1]).index,
+        quadrant: this.getIndexForValues(value, 'quadrant'),
+        ring: this.getIndexForValues(value, 'ring'),
         moved: 0
       };
     });
     return radarEntries.length ? radarEntries : [];
+  }
+
+  private getIndexForValues(value: string, type: string): number | null {
+    const filtered =
+      type === 'quadrant'
+        ? QUADRANTS.find(q => q.name === value[2])
+        : RINGS.find(r => r.name === value[1]);
+    try {
+      return filtered.index;
+    } catch (error) {
+      this.dialog.open(this.errorDialog, {
+        disableClose: true,
+        width: '400px'
+      });
+      this.loader.isLoading.next(false);
+      throw new Error(`There was an error: ${error.message}`);
+    }
   }
 }
