@@ -17,6 +17,7 @@ import {
   MatButtonModule
 } from '@angular/material';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ErrorDialogComponent } from './dashboard/error-dialog.component';
 
 @NgModule({
   imports: [
@@ -37,13 +38,17 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     LoginPageComponent,
     SidenavComponent,
     DashboardComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ErrorDialogComponent
   ],
   exports: [
     HomeComponent,
     LoginPageComponent,
     SidenavComponent,
     ToolbarComponent
+  ],
+  entryComponents: [
+    ErrorDialogComponent
   ]
 })
 export class ClientModule {}

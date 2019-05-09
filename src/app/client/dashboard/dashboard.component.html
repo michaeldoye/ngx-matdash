@@ -5,10 +5,11 @@
       [(value)]="selectedFileId"
       (selectionChange)="importSheet($event)"
     >
-      <mat-option>None</mat-option>
-      <mat-option [value]="file.id" *ngFor="let file of files">
-        {{ file.name }}
-      </mat-option>
+      <ng-container *ngIf="(files$ | async) as driveFiles">
+        <mat-option [value]="file.id" *ngFor="let file of driveFiles">
+          {{ file.name }}
+        </mat-option>
+      </ng-container>
     </mat-select>
   </mat-form-field>
   <mat-card [@flyInOut]="true" *ngIf="showRadar">
@@ -24,10 +25,11 @@
       [(value)]="selectedFileId"
       (selectionChange)="importSheet($event)"
     >
-      <mat-option>None</mat-option>
-      <mat-option [value]="file.id" *ngFor="let file of files">
-        {{ file.name }}
-      </mat-option>
+      <ng-container *ngIf="(files$ | async) as driveFiles">
+        <mat-option [value]="file.id" *ngFor="let file of driveFiles">
+          {{ file.name }}
+        </mat-option>
+      </ng-container>
     </mat-select>
   </mat-form-field>
   <mat-divider></mat-divider>
@@ -38,26 +40,5 @@
         Request Access</a
       >
     </small>
-  </mat-dialog-actions>
-</ng-template>
-
-<ng-template #errorDialog>
-  <div fxLayout="column" fxLayoutAlign="center center">
-    <mat-icon class="error-icon" color="warn">error</mat-icon>
-    <h3>There was an error, please try again</h3>
-  </div>
-  <mat-dialog-content>
-    <div style="text-align: center;">
-      <small>It is likely that there is a problem with the spreadsheet data. Please
-        check the spreadsheet and try again. Or choose a new sheet</small>
-    </div>
-  </mat-dialog-content>
-  <mat-dialog-actions
-    fxLayout="row"
-    fxLayoutAlign="center center"
-    fxLayoutGap="5px"
-  >
-    <button mat-flat-button color="accent" mat-dialog-close>close</button>
-    <a mat-flat-button color="primary" href="/">Reload</a>
   </mat-dialog-actions>
 </ng-template>

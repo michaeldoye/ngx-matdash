@@ -16,14 +16,19 @@
 
   <span fxFlex></span>
 
-  <button
-    mat-icon-button
-    matTooltip="More"
-    [matMenuTriggerFor]="menu"
-    *ngIf="gAuth.isSignedIn"
-  >
-    <mat-icon>more_vert</mat-icon>
-  </button>
+  <ng-container *ngIf="gAuth.isSignedIn">
+    <span class="user-name">
+      {{ gAuth.currentUser?.w3.U3 }}
+    </span>
+
+    <span [matMenuTriggerFor]="menu">
+    <img
+      class="avatar"
+      width="30px"
+      [src]="gAuth.currentUser?.w3.Paa || 'https://api.adorable.io/avatars/40/happy.png'">
+  </span>
+  </ng-container>
+
   <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="login">
       <mat-icon>exit_to_app</mat-icon>

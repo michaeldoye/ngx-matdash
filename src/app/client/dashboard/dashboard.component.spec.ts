@@ -1,7 +1,20 @@
 
-import { fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { fakeAsync, ComponentFixture, TestBed, flush, tick } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
+import { MaterialModule } from '../../material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GapiAuthService } from '../../core/auth/gapiAuth.service';
+import { SidenavService } from '../sidenav/sidenav.service';
+import { GapiFilesService } from '../../core/utils/gapiFiles.service';
+
+class MockGapiAuthService {
+  files = [];
+}
+
+class MockGoogleApi {
+  getDriveFiles = () => {};
+}
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -9,7 +22,12 @@ describe('DashboardComponent', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
+      declarations: [ DashboardComponent ],
+      imports: [ MaterialModule, BrowserAnimationsModule ],
+      providers: [
+        { provide: GapiAuthService, useClass: MockGapiAuthService },
+        { provide: GapiFilesService, useClass: MockGoogleApi }
+      ]
     })
     .compileComponents();
 
@@ -18,7 +36,8 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should compile', () => {
+  it('should compile', fakeAsync(() => {
+    tick(1000);
     expect(component).toBeTruthy();
-  });
+  }));
 });
