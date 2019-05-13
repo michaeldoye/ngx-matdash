@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.files$ = this.fileService.getDriveFiles();
     Promise.resolve().then(() => {
-      this.dialog.open(this.sheetPickerDialog, { disableClose: false });
+      this.dialog.open(this.sheetPickerDialog, { disableClose: true });
     });
   }
 

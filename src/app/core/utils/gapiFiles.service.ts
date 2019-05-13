@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GapiAuthService } from '../auth/gapiAuth.service';
 import { LoadingService } from './loading.service';
@@ -22,7 +22,8 @@ export class GapiFilesService {
   constructor(
     private googleApi: GapiAuthService,
     private loader: LoadingService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private zone: NgZone
   ) {}
 
   public getDriveFiles(): Observable<any> {
@@ -62,7 +63,7 @@ export class GapiFilesService {
     return radarEntries.length ? radarEntries : [];
   }
 
-  private getIndexForValues(value: string, type: string): number {
+  public getIndexForValues(value: string, type: string): number {
     const filtered =
       type === 'quadrant'
         ? QUADRANTS.find(q => q.name === value[2])
@@ -70,12 +71,14 @@ export class GapiFilesService {
     try {
       return filtered.index;
     } catch (error) {
-      this.dialog.open(ErrorDialogComponent, {
-        disableClose: true,
-        width: '400px',
-        data: { error: error.message }
-      });
       this.loader.isLoading.next(false);
+      this.zone.run(() => {
+        this.dialog.open(ErrorDialogComponent, {
+          disableClose: true,
+          width: '400px',
+          data: { error: error.message }
+        });
+      });
       throw new Error(`There was an error: ${error.message}`);
     }
   }

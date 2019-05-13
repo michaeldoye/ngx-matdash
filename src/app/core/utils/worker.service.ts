@@ -19,9 +19,9 @@ export class WorkerService {
     this.updates.available.subscribe(event => this.promptUser(event));
   }
 
-  private promptUser(e): void {
+  private promptUser(e: any): void {
     const snackBarRef = this.snackBar.open(
-      'A new version is available',
+      'A new version of the Tech Radar is available',
       'Refresh',
       { horizontalPosition: 'left' }
     );

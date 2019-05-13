@@ -19,12 +19,17 @@ import { MAT_DIALOG_DATA } from '@angular/material';
       fxLayoutAlign="center center"
       fxLayoutGap="5px"
     >
-      <a mat-flat-button color="primary" href="/">Reload</a>
+      <button mat-flat-button color="accent" mat-dialog-close>close</button>
+      <button mat-flat-button color="primary" (click)="reload()">Reload</button>
     </mat-dialog-actions>
   `
 })
 export class ErrorDialogComponent {
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
+
+  reload() {
+    document.location.reload();
+  }
 }

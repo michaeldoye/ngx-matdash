@@ -5,9 +5,7 @@ import { DashboardComponent } from './client/dashboard/dashboard.component';
 import { MaterialModule } from './material.module';
 import { SidenavComponent } from './client/sidenav/sidenav.component';
 import { ChildrenOutletContexts, RouterOutlet } from '@angular/router';
-import { WorkerService } from './core/utils/worker.service';
-import { ServiceWorkerModule, SwUpdate } from '@angular/service-worker';
-import { NgswCommChannel } from '@angular/service-worker/src/low_level';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 describe('AppComponent', () => {
   beforeEach(async(() => {
