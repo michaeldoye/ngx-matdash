@@ -1,18 +1,28 @@
-<div class="grid-container">
-  <mat-form-field>
-    <mat-label>Select an option</mat-label>
-    <mat-select
-      [(value)]="selectedFileId"
-      (selectionChange)="importSheet($event)"
-    >
-      <ng-container *ngIf="(files$ | async) as driveFiles">
-        <mat-option [value]="file.id" *ngFor="let file of driveFiles">
-          {{ file.name }}
-        </mat-option>
-      </ng-container>
-    </mat-select>
-  </mat-form-field>
-  <mat-card [@flyInOut]="true" *ngIf="showRadar">
+<div class="grid-container" fxLayout="column">
+  <div fxLayoutAlign="center center">
+    <mat-form-field>
+      <mat-label>Select an option</mat-label>
+      <mat-select
+        [(value)]="fileObject.value"
+        (selectionChange)="importSheet($event)"
+      >
+        <ng-container *ngIf="files$ | async as driveFiles">
+          <mat-option [value]="file.id" *ngFor="let file of driveFiles">
+            {{ file.name }}
+          </mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <span fxFlex></span>
+    <span class="save-selection-top">
+      <mat-checkbox
+        [(ngModel)]="saveSelection"
+        (change)="handleSaveSelection($event)"
+        >Save selection</mat-checkbox
+      >
+    </span>
+  </div>
+  <mat-card [@fadeInOut]="true" *ngIf="showRadar">
     <svg id="radar" />
   </mat-card>
 </div>
@@ -25,13 +35,20 @@
       [(value)]="selectedFileId"
       (selectionChange)="importSheet($event)"
     >
-      <ng-container *ngIf="(files$ | async) as driveFiles">
+      <ng-container *ngIf="files$ | async as driveFiles">
         <mat-option [value]="file.id" *ngFor="let file of driveFiles">
           {{ file.name }}
         </mat-option>
       </ng-container>
     </mat-select>
   </mat-form-field>
+  <div class="save-selection">
+    <mat-checkbox
+      [(ngModel)]="saveSelection"
+      (change)="handleSaveSelection($event)"
+      >Save selection</mat-checkbox
+    >
+  </div>
   <mat-divider></mat-divider>
   <mat-dialog-actions fxLayout="row" fxLayoutAlign="end">
     <small>

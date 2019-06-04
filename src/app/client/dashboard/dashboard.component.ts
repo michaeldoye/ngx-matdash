@@ -5,12 +5,17 @@ import {
   TemplateRef,
   ViewChild
 } from '@angular/core';
-import { flyInOut } from '../../route.animation';
+import { fadeInOut } from '../../route.animation';
 import { LoadingService } from '../../core/utils/loading.service';
-import { MatDialog, MatSelectChange } from '@angular/material';
+import {
+  MatCheckboxChange,
+  MatDialog,
+  MatSelectChange
+} from '@angular/material';
 import { RadarConfig } from '../../core/config/radar.config';
 import { GapiFilesService } from '../../core/utils/gapiFiles.service';
 import { Observable } from 'rxjs';
+import { StorageService } from '../../core/utils/storage.service';
 
 declare function radar_visualization(config: RadarConfig): void;
 
@@ -19,31 +24,42 @@ declare function radar_visualization(config: RadarConfig): void;
   selector: 'ngxtemplate-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  animations: [flyInOut]
+  animations: [fadeInOut]
 })
 export class DashboardComponent implements OnInit {
   @ViewChild('sheetPickerDialog') sheetPickerDialog: TemplateRef<MatDialog>;
-  public selectedFileId: string;
   public showRadar: boolean;
   public files$: Observable<any>;
+  public saveSelection: boolean;
+  public fileObject: any = {
+    value: ''
+  };
 
   constructor(
     private loader: LoadingService,
     public dialog: MatDialog,
     public fileService: GapiFilesService,
-    private zone: NgZone
+    private zone: NgZone,
+    private storage: StorageService
   ) {}
 
   ngOnInit() {
     this.files$ = this.fileService.getDriveFiles();
     Promise.resolve().then(() => {
-      this.dialog.open(this.sheetPickerDialog, { disableClose: true });
+      const savedSheetEvent = this.storage.get('sheetId');
+      if (savedSheetEvent) {
+        this.saveSelection = true;
+        this.importSheet(savedSheetEvent);
+      } else {
+        this.dialog.open(this.sheetPickerDialog, { disableClose: true });
+      }
     });
   }
 
   public importSheet(event: MatSelectChange): void {
     this.showRadar = false;
     this.loader.isLoading.next(true);
+    this.setSavedSelection(event);
     this.fileService
       .getDriveFileContents(event)
       .subscribe((radarData: RadarConfig) => {
@@ -54,5 +70,25 @@ export class DashboardComponent implements OnInit {
           this.dialog.closeAll();
         });
       });
+  }
+
+  setSavedSelection(event: MatSelectChange): void {
+    this.fileObject = {
+      value: event.value,
+      source: {
+        triggerValue: event.source.triggerValue
+      }
+    };
+    if (this.saveSelection) {
+      this.storage.set('sheetId', this.fileObject);
+    }
+  }
+
+  handleSaveSelection(event: MatCheckboxChange): void {
+    if (!event.checked) {
+      this.storage.clearAll();
+    } else {
+      this.storage.set('sheetId', this.fileObject);
+    }
   }
 }

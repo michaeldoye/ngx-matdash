@@ -13,7 +13,6 @@ interface GapiConfig {
   providedIn: 'root'
 })
 export class GapiAuthService {
-  // @ts-ignore
   private googleAuth: gapi.auth2.GoogleAuth;
   private googleSheets: any;
   private googleDrive: any;

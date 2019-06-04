@@ -12,8 +12,10 @@ import {
   RINGS
 } from '../config/radar.config';
 import { ErrorDialogComponent } from '../../client/dashboard/error-dialog.component';
+import { StorageService } from './storage.service';
 
 const MIME_TYPE = 'application/vnd.google-apps.spreadsheet';
+const SHEET_RANGE = 'A2:E';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,8 @@ export class GapiFilesService {
     private googleApi: GapiAuthService,
     private loader: LoadingService,
     public dialog: MatDialog,
-    private zone: NgZone
+    private zone: NgZone,
+    private storage: StorageService
   ) {}
 
   public getDriveFiles(): Observable<any> {
@@ -40,7 +43,7 @@ export class GapiFilesService {
   }
 
   public getDriveFileContents(event: MatSelectChange): Observable<any> {
-    return fromPromise(this.googleApi.getFile(event.value, 'A2:E')).pipe(
+    return fromPromise(this.googleApi.getFile(event.value, SHEET_RANGE)).pipe(
       pluck('result', 'values'),
       map(data => {
         return Object.assign(radarConfig, {
@@ -79,6 +82,7 @@ export class GapiFilesService {
           data: { error: error.message }
         });
       });
+      this.storage.clearAll();
       throw new Error(`There was an error: ${error.message}`);
     }
   }

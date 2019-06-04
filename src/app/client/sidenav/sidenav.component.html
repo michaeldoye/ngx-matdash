@@ -1,5 +1,5 @@
 <mat-sidenav-container [hasBackdrop]="true">
-  <mat-sidenav #sidenav mode="over" opened="false" class="sidenav">
+  <mat-sidenav (openedChange)="toggleSavedSheet($event)" #sidenav mode="over" opened="false" class="sidenav">
     <mat-nav-list class="nav-list">
       <mat-list-item>
         <mat-icon matListIcon>exit_to_app</mat-icon>
@@ -7,12 +7,21 @@
           [style.outline]="'none'"
           matLine
           (click)="sidenav.close()"
-          routerLink="login"
-          >Logout</a
-        >
+          routerLink="login">
+          Sign Out
+        </a>
       </mat-list-item>
       <mat-divider></mat-divider>
     </mat-nav-list>
+    <mat-card class="sidebar-info" [@fadeInOut]="true" *ngIf="savedSheet">
+      <span mat-card-subtitle>Currently saved radar</span>
+      <small>{{ savedSheet?.source?.triggerValue }}</small>
+      <div mat-card-actions fxLayoutAlign="end center">
+        <button mat-icon-button matTooltip="clear saved radar" (click)="clearSavedRadar()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card>
   </mat-sidenav>
   <mat-sidenav-content class="content">
     <router-outlet></router-outlet>
