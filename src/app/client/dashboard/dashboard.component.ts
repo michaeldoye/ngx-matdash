@@ -36,19 +36,21 @@ export class DashboardComponent implements OnInit {
   };
 
   constructor(
-    private loader: LoadingService,
     public dialog: MatDialog,
     public fileService: GapiFilesService,
+    private loader: LoadingService,
     private zone: NgZone,
     private storage: StorageService
   ) {}
 
   ngOnInit() {
     this.files$ = this.fileService.getDriveFiles();
+    this.storage.storageValue$.subscribe((value: any) => {
+      this.saveSelection = !!value;
+    });
     Promise.resolve().then(() => {
       const savedSheetEvent = this.storage.get('sheetId');
       if (savedSheetEvent) {
-        this.saveSelection = true;
         this.importSheet(savedSheetEvent);
       } else {
         this.dialog.open(this.sheetPickerDialog, { disableClose: true });
@@ -72,7 +74,7 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  setSavedSelection(event: MatSelectChange): void {
+  public setSavedSelection(event: MatSelectChange): void {
     this.fileObject = {
       value: event.value,
       source: {
@@ -84,7 +86,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  handleSaveSelection(event: MatCheckboxChange): void {
+  public handleSaveSelection(event: MatCheckboxChange): void {
     if (!event.checked) {
       this.storage.clearAll();
     } else {

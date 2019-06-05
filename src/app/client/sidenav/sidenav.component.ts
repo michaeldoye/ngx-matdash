@@ -19,11 +19,9 @@ export class SidenavComponent implements OnInit {
 
   public ngOnInit(): void {
     this.sv.setSidenav(this.sidenav);
-    this.savedSheet = this.storage.get('sheetId');
-  }
-
-  toggleSavedSheet(isOpen: boolean) {
-    this.savedSheet = isOpen ? this.storage.get('sheetId') : null;
+    this.storage.storageValue$.subscribe((value: any) => {
+      this.savedSheet = value;
+    });
   }
 
   clearSavedRadar() {
