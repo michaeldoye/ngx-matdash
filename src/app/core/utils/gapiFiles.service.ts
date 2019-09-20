@@ -17,6 +17,18 @@ import { StorageService } from './storage.service';
 const MIME_TYPE = 'application/vnd.google-apps.spreadsheet';
 const SHEET_RANGE = 'A2:E';
 
+enum GAPIKeysEnum {
+  result = 'result',
+  values = 'values',
+  files = 'files'
+}
+
+enum RadarEnum {
+  radar = 'radar',
+  quadrant  = 'quadrant',
+  ring = 'ring'
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,12 +43,12 @@ export class GapiFilesService {
 
   public getDriveFiles(): Observable<any> {
     return fromPromise(this.googleApi.getFiles()).pipe(
-      pluck('result', 'files'),
+      pluck(GAPIKeysEnum.result, GAPIKeysEnum.files),
       map(data => {
         return data.filter(
           file =>
             file.mimeType === MIME_TYPE &&
-            file.name.toLowerCase().indexOf('radar') > -1
+            file.name.toLowerCase().indexOf(RadarEnum.radar) > -1
         );
       })
     );
@@ -44,7 +56,7 @@ export class GapiFilesService {
 
   public getDriveFileContents(event: MatSelectChange): Observable<any> {
     return fromPromise(this.googleApi.getFile(event.value, SHEET_RANGE)).pipe(
-      pluck('result', 'values'),
+      pluck(GAPIKeysEnum.result, GAPIKeysEnum.values),
       map(data => {
         return Object.assign(radarConfig, {
           entries: this.mapRadarEntries(data),
@@ -58,8 +70,8 @@ export class GapiFilesService {
     const radarEntries = values.map(value => {
       return {
         label: value[0],
-        quadrant: this.getIndexForValues(value, 'quadrant'),
-        ring: this.getIndexForValues(value, 'ring'),
+        quadrant: this.getIndexForValues(value, RadarEnum.quadrant),
+        ring: this.getIndexForValues(value, RadarEnum.ring),
         moved: 0
       };
     });
@@ -68,7 +80,7 @@ export class GapiFilesService {
 
   public getIndexForValues(value: string, type: string): number {
     const filtered =
-      type === 'quadrant'
+      type === RadarEnum.quadrant
         ? QUADRANTS.find(q => q.name === value[2])
         : RINGS.find(r => r.name === value[1]);
     try {

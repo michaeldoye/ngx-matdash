@@ -1,11 +1,10 @@
 
-import { fakeAsync, ComponentFixture, TestBed, flush, tick } from '@angular/core/testing';
+import { fakeAsync, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
 import { MaterialModule } from '../../material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GapiAuthService } from '../../core/auth/gapiAuth.service';
-import { SidenavService } from '../sidenav/sidenav.service';
 import { GapiFilesService } from '../../core/utils/gapiFiles.service';
 
 class MockGapiAuthService {

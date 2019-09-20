@@ -6,7 +6,7 @@
         [(value)]="fileObject.value"
         (selectionChange)="importSheet($event)"
       >
-        <ng-container *ngIf="files$ | async as driveFiles">
+        <ng-container *ngIf="(files$ | async ) as driveFiles">
           <mat-option [value]="file.id" *ngFor="let file of driveFiles">
             {{ file.name }}
           </mat-option>
